@@ -45,4 +45,15 @@ module.exports = function (browser) {
     return browser
       .assert.cssClassPresent(firstTodoItem, 'completed');
   };
+
+  this.deleteTodo = () => {
+    return browser
+      .moveToElement('.todo-list > .todo:first-child', 10, 10)
+      .click('.todo-list > .todo:first-child > .view > button.destroy');
+  };
+
+  this.shouldGetEmptyTodoList = () => {
+    return browser
+      .assert.elementCount('.todo', 0);
+  };
 };

@@ -46,5 +46,17 @@ module.exports = {
       .page.todomvc().makeTodoCompeleted()
       .page.todomvc().shouldCompeleteTodo()
       .end();
+  },
+
+  '應可從列表上刪除待辦事項' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .page.todomvc().show()
+      .page.todomvc().addTodo(todo)
+      .page.todomvc().shouldSeeAtFirstTodoItem(todo)
+      .page.todomvc().deleteTodo()
+      .page.todomvc().shouldGetEmptyTodoList()
+      .end();
   }
 };
