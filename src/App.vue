@@ -12,6 +12,7 @@
           <div class="view">
             <input class="toggle" type="checkbox" v-model="todo.completed">
             <label>{{ todo.title }}</label>
+            <button class="destroy" @click="removeTodo(todo)"></button>
           </div>
         </li>
       </ul>
@@ -33,6 +34,9 @@
     methods: {
       addTodo (todo) {
         this.todos.push({ title: todo, completed: false });
+      },
+      removeTodo (todo) {
+        this.todos.$remove(todo);
       }
     }
   };
