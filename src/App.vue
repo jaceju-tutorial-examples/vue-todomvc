@@ -2,11 +2,7 @@
   <div id="app" class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <input class="new-todo"
-             autofocus autocomplete="off"
-             placeholder="What needs to be done?"
-             v-model="newTodo"
-             @keyup.enter="addTodo">
+      <todo-input @add-todo="addTodo"></todo-input>
     </header>
     <section class="main" v-show="todos.length" v-cloak>
       <ul class="todo-list">
@@ -22,21 +18,19 @@
 </template>
 <style src="todomvc-app-css/index.css"></style>
 <script>
+  import TodoInput from './components/TodoInput';
   export default {
+    components: {
+      TodoInput
+    },
     data () {
       return {
-        newTodo: '',
         todos: []
       };
     },
     methods: {
-      addTodo () {
-        const todo = this.newTodo && this.newTodo.trim();
-        if (!todo) {
-          return;
-        }
+      addTodo (todo) {
         this.todos.push({ title: todo, completed: false });
-        this.newTodo = '';
       }
     }
   };
