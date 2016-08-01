@@ -16,4 +16,17 @@ describe('Store', () => {
     // assert
     actual.should.to.deep.equal(expected)
   });
+
+  it('應可儲存資料到 localStorage 中', () => {
+    // arrange
+    const STORAGE_KEY = 'vue-todomvc';
+    const expected = '["test"]';
+
+    // act
+    store.save(['test']);
+
+    // assert
+    const actual = localStorage.getItem(STORAGE_KEY);
+    actual.should.to.deep.equal(expected);
+  });
 });
