@@ -35,4 +35,14 @@ module.exports = function (browser) {
     return browser
       .assert.hidden('.main', 1000);
   };
+
+  this.makeTodoCompeleted = () => {
+    return browser
+      .click(firstTodoItem + ' > .view > .toggle');
+  };
+
+  this.shouldCompeleteTodo = () => {
+    return browser
+      .assert.cssClassPresent(firstTodoItem, 'completed');
+  };
 };

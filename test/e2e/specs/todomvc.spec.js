@@ -34,5 +34,17 @@ module.exports = {
       .page.todomvc().show()
       .page.todomvc().shouldHiddenTodoListWithoutTodo()
       .end();
+  },
+
+  '當完成待辦事項後應標記為已完成' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .page.todomvc().show()
+      .page.todomvc().addTodo(todo)
+      .page.todomvc().shouldSeeAtFirstTodoItem(todo)
+      .page.todomvc().makeTodoCompeleted()
+      .page.todomvc().shouldCompeleteTodo()
+      .end();
   }
 };
