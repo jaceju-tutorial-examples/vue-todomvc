@@ -22,7 +22,17 @@
 <style src="todomvc-app-css/index.css"></style>
 <script>
   import TodoInput from './components/TodoInput';
+  import store from './store';
   export default {
+    created () {
+      this.todos = store.fetch();
+    },
+    watch: {
+      todos: {
+        deep: true,
+        handler: store.save
+      }
+    },
     components: {
       TodoInput
     },
