@@ -10,5 +10,16 @@ module.exports = {
       .assert.containsText('h1', 'todos')
       .assert.elementPresent('.new-todo')
       .end();
+  },
+
+  '輸入欄位應該在輸入待辦事項後清空' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .url('http://localhost:8080')
+      .waitForElementVisible('#app', 5000)
+      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .assert.value('.new-todo', '')
+      .end();
   }
 };
