@@ -58,5 +58,16 @@ module.exports = {
       .page.todomvc().deleteTodo()
       .page.todomvc().shouldGetEmptyTodoList()
       .end();
+  },
+
+  '重整頁面後應該看到新增的待辦事項' (browser) {
+    const todo = 'This is new todo';
+
+    browser
+      .page.todomvc().show()
+      .page.todomvc().addTodo(todo)
+      .refresh()
+      .page.todomvc().shouldSeeAtFirstTodoItem(todo)
+      .end();
   }
 };
