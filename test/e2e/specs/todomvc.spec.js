@@ -4,8 +4,7 @@
 module.exports = {
   '應顯示程式標題與輸入欄位' (browser) {
     browser
-      .url('http://localhost:8080')
-      .waitForElementVisible('#app', 5000)
+      .page.todomvc().show()
       .assert.elementPresent('.header')
       .assert.containsText('h1', 'todos')
       .assert.elementPresent('.new-todo')
@@ -16,8 +15,7 @@ module.exports = {
     const todo = 'This is new todo';
 
     browser
-      .url('http://localhost:8080')
-      .waitForElementVisible('#app', 5000)
+      .page.todomvc().show()
       .setValue('.new-todo', [todo, browser.Keys.ENTER])
       .assert.value('.new-todo', '')
       .end();
@@ -27,8 +25,7 @@ module.exports = {
     const todo = 'This is new todo';
 
     browser
-      .url('http://localhost:8080')
-      .waitForElementVisible('#app', 5000)
+      .page.todomvc().show()
       .setValue('.new-todo', [todo, browser.Keys.ENTER])
       .waitForElementVisible('.todo-list > .todo:first-child', 1000)
       .assert.containsText('.todo-list > .todo:first-child > .view > label', todo)
@@ -37,8 +34,7 @@ module.exports = {
 
   '當沒有待辦事項時列表應該隱藏' (browser) {
     browser
-      .url('http://localhost:8080')
-      .waitForElementVisible('#app', 5000)
+      .page.todomvc().show()
       .assert.hidden('.main', 1000)
       .end();
   }
