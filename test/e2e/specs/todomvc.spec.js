@@ -16,7 +16,7 @@ module.exports = {
 
     browser
       .page.todomvc().show()
-      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .page.todomvc().addTodo(todo)
       .assert.value('.new-todo', '')
       .end();
   },
@@ -26,7 +26,7 @@ module.exports = {
 
     browser
       .page.todomvc().show()
-      .setValue('.new-todo', [todo, browser.Keys.ENTER])
+      .page.todomvc().addTodo(todo)
       .waitForElementVisible('.todo-list > .todo:first-child', 1000)
       .assert.containsText('.todo-list > .todo:first-child > .view > label', todo)
       .end();
