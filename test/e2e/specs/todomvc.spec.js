@@ -5,9 +5,7 @@ module.exports = {
   '應顯示程式標題與輸入欄位' (browser) {
     browser
       .page.todomvc().show()
-      .assert.elementPresent('.header')
-      .assert.containsText('h1', 'todos')
-      .assert.elementPresent('.new-todo')
+      .page.todomvc().shouldSeeTitleAndInput()
       .end();
   },
 
