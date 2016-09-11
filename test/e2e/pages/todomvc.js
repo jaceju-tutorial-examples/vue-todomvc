@@ -1,4 +1,6 @@
 module.exports = function (browser) {
+  const newTodo = '.new-todo';
+
   this.show = () => {
     return browser
       .url('http://localhost:8080')
@@ -14,6 +16,11 @@ module.exports = function (browser) {
 
   this.addTodo = (todo) => {
     return browser
-      .setValue('.new-todo', [todo, browser.Keys.ENTER]);
+      .setValue(newTodo, [todo, browser.Keys.ENTER]);
+  };
+
+  this.shouldSeeAtNewTodo = (value) => {
+    return browser
+      .assert.value(newTodo, value);
   };
 };

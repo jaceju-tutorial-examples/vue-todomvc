@@ -15,7 +15,7 @@ module.exports = {
     browser
       .page.todomvc().show()
       .page.todomvc().addTodo(todo)
-      .assert.value('.new-todo', '')
+      .page.todomvc().shouldSeeAtNewTodo('')
       .end();
   },
 
