@@ -1,5 +1,6 @@
 module.exports = function (browser) {
   const newTodo = '.new-todo';
+  const firstTodoItem = '.todo-list > .todo:first-child';
 
   this.show = () => {
     return browser
@@ -22,5 +23,11 @@ module.exports = function (browser) {
   this.shouldSeeAtNewTodo = (value) => {
     return browser
       .assert.value(newTodo, value);
+  };
+
+  this.shouldSeeAtFirstTodoItem = (todo) => {
+    return browser
+      .waitForElementVisible(firstTodoItem, 1000)
+      .assert.containsText(firstTodoItem + ' > .view > label', todo);
   };
 };

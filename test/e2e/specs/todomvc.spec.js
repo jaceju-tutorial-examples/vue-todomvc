@@ -25,8 +25,7 @@ module.exports = {
     browser
       .page.todomvc().show()
       .page.todomvc().addTodo(todo)
-      .waitForElementVisible('.todo-list > .todo:first-child', 1000)
-      .assert.containsText('.todo-list > .todo:first-child > .view > label', todo)
+      .page.todomvc().shouldSeeAtFirstTodoItem(todo)
       .end();
   },
 
