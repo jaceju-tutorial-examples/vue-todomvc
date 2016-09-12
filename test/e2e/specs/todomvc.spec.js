@@ -32,7 +32,7 @@ module.exports = {
   '當沒有待辦事項時列表應該隱藏' (browser) {
     browser
       .page.todomvc().show()
-      .assert.hidden('.main', 1000)
+      .page.todomvc().shouldHiddenTodoListWithoutTodo()
       .end();
   }
 };

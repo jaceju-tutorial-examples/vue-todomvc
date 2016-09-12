@@ -30,4 +30,9 @@ module.exports = function (browser) {
       .waitForElementVisible(firstTodoItem, 1000)
       .assert.containsText(firstTodoItem + ' > .view > label', todo);
   };
+
+  this.shouldHiddenTodoListWithoutTodo = () => {
+    return browser
+      .assert.hidden('.main', 1000);
+  };
 };
